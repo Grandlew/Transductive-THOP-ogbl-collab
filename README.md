@@ -6,7 +6,7 @@ Transductive T-HOP Fusion is a non-neural temporal high-order path fusion method
 
 ---
 
-## Installation requirements
+### Installation requirements
 
 ```bash
 numpy>=1.22
