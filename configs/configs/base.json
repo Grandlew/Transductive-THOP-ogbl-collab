@@ -1,0 +1,34 @@
+{
+  "dataset": "ogbl-collab",
+  "metric": "Hits@50",
+  "protocol": {
+    "validation_graph": "train only",
+    "test_graph": "train + validation positives"
+  },
+  "config": {
+    "recency_lambda": 0.2,
+    "coherence_mu": 0.35,
+    "top_neighbors_3hop": 64,
+    "feature_chunk_size": 50000,
+    "blend_trials": 10000
+  },
+  "features": [
+    "w_aa_product",
+    "w_aa_sqrt",
+    "aa",
+    "ra",
+    "w_ra_product",
+    "w_cn_product",
+    "temp2_sum",
+    "temp2_coh_sum",
+    "temp3_capped_sum",
+    "temp3_coh_capped_sum",
+    "log1p_temp2",
+    "log1p_temp2_coh",
+    "log1p_temp3",
+    "direct_weight",
+    "direct_recency",
+    "direct_weight_x_recency",
+    "x_cosine"
+  ]
+}
