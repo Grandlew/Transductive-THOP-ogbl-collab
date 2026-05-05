@@ -31,7 +31,8 @@ The final score is a validation-selected linear fusion of these features.
 For validation:
 
 input graph = training positive edges only
-target = validation positive/negative edges
+target = validation positive/negative edges.
+
 For final test inference:
 input graph = training positive edges + validation positive edges
 target = test positive/negative edges
