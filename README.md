@@ -1,36 +1,37 @@
 # Transductive T-HOP Fusion for ogbl-collab
 
-This repository contains the code used for an OGB `ogbl-collab` leaderboard submission.
+This repository contains the code for Transductive T-HOP Fusion, a non-neural temporal high-order path fusion method for the OGB ogbl-collab link prediction benchmark.
 
-## Method
+## Result
 
-Transductive T-HOP Fusion is a non-neural temporal high order path fusion method for collaboration link prediction.
+Official 10-seed result over seeds `0–9`:
 
-The model ranks candidate links using:
+| Dataset | Metric | Validation | Test |
+|---|---:|---:|---:|
+| ogbl-collab | Hits@50 | 0.6962 ± 0.0003 | 0.6925 ± 0.0010 |
 
-- weighted Adamic-Adar / Resource Allocation features
+The reported standard deviation is the unbiased standard deviation over 10 seeds.
+
+## Method summary
+
+Transductive T-HOP Fusion ranks candidate collaboration links using:
+
+- weighted Adamic-Adar features
+- resource allocation features
 - weighted common-neighbor closure
-- recency-weighted two-hop temporal path features
-- recency-weighted capped three-hop temporal path features
+- recency-weighted two-hop temporal paths
+- recency-weighted capped three-hop temporal paths
 - direct collaboration memory
 - semantic cosine similarity from OGB node features
 
-Feature weights are selected on the official validation split.
+The final score is a validation-selected linear fusion of these features.
 
 ## Evaluation protocol
 
-For validation, the input graph contains only training edges.
+For validation:
 
-For final test inference, validation positive edges are added to the observed graph:
-
-- validation graph: train only
-- test graph: train + validation positives
-
-This follows the common `ogbl-collab` transductive inference protocol where validation edges may be used as input for final test prediction after model selection.
-
-## Requirements
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
+input graph = training positive edges only
+target = validation positive/negative edges
+For final test inference:
+input graph = training positive edges + validation positive edges
+target = test positive/negative edges
