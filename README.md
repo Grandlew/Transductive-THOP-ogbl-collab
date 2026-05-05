@@ -15,7 +15,7 @@ torch>=2.0
 ogb>=1.3.6
 tqdm>=4.64
 scipy>=1.8
-
+```
 ##Install dependencies:
 pip install -r requirements.txt.
 
