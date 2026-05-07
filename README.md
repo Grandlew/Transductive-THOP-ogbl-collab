@@ -120,6 +120,7 @@ Model
 
 For a candidate pair (u, v), Transductive T-HOP Fusion computes:
 
+```
 weighted Adamic-Adar
 weighted Resource Allocation
 weighted common-neighbor closure
@@ -127,7 +128,7 @@ recency-weighted two-hop temporal path features
 capped three-hop temporal path features
 direct collaboration memory
 semantic cosine similarity from OGB node features
-
+```
 The final score is a validation-selected linear fusion:
 
 ```
