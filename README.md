@@ -138,12 +138,15 @@ S(u, v) = Σ_i α_i z_i(u, v)
 where z_i is a standardized feature score.
 
 ### Tuned hyperparameters
+
+```
 recency_lambda: [0.20*]
 coherence_mu: [0.35*]
 top_neighbors_3hop: [64*]
 feature_chunk_size: [50000*]
 blend_trials: [10000*]
 random seeds: [0,1,2,3,4,5,6,7,8,9]
+```
 
 Fusion weight search ranges:
 ```
