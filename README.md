@@ -16,10 +16,12 @@ ogb>=1.3.6
 tqdm>=4.64
 scipy>=1.8
 ```
-##Install dependencies:
+### Install dependencies:
+```
 pip install -r requirements.txt.
+```
 
-##Dataset
+### Dataset
 The code automatically downloads and processes ogbl-collab through OGB:
 
 ```
@@ -27,16 +29,19 @@ from ogb.linkproppred import PygLinkPropPredDataset
 dataset = PygLinkPropPredDataset(name="ogbl-collab", root="data")
 ##Evaluation protocol
 For validation:
+```
 
 ```
 input graph = training positive edges only
 target = validation positive/negative edges
+```
 
 For final test inference:
 
 ```
 input graph = training positive edges + validation positive edges
 target = test positive/negative edges
+```
 
 No validation negative edges or test labels are used for graph construction or feature computation.
 
@@ -51,7 +56,7 @@ Basic command-line arguments
 --seed: random seed for one run.
 --force_rebuild: rebuild cached feature matrices.
 
-##Reproduce one seed
+### Reproduce one seed
 
 python run_thop_collab.py \
   --config configs/base.json \
@@ -61,13 +66,13 @@ python run_thop_collab.py \
   --seed 0 \
   --trials 10000
 
-  ##This saves:
+  ### This saves:
   results/tt_seed0_report.json
 results/tt_seed0_predictions.pkl
 results/tt_seed0_records.json
 
-##Reproduce official 10-seed result
-OGB requires reporting the average and unbiased standard deviation over 10 seeds. We use seeds 0–9.
+### Reproduce official 10-seed result
+I use seeds 0–9.
 
 ```
 python run_10_seeds.py \
@@ -76,7 +81,8 @@ python run_10_seeds.py \
   --cache_dir cache \
   --result_dir results \
   --trials 10000
-  
+  ```
+
   This saves:
 
 ```
@@ -85,19 +91,22 @@ results/tt_seed0_report.json
 results/tt_seed9_report.json
 results/ten_seed_results.csv
 results/ten_seed_summary.json
+```
 
-##Create test submission files
+### Create test submission files
 
 After running at least one seed:
 ```
 python submit_collab.py \
   --pred_path results/tt_seed0_predictions.pkl \
   --submission_dir submission
+```
+
 This saves the prediction tensors and metadata into:
 
 submission/
 
-##Performance
+### Performance
 
 Official 10-seed result over seeds 0–9:
 | Dataset     |  Metric |      Validation |            Test |
@@ -122,10 +131,10 @@ The final score is a validation-selected linear fusion:
 
 ```
 S(u, v) = Σ_i α_i z_i(u, v)
-
+```
 where z_i is a standardized feature score.
 
-##Tuned hyperparameters
+### Tuned hyperparameters
 recency_lambda: [0.20*]
 coherence_mu: [0.35*]
 top_neighbors_3hop: [64*]
@@ -144,27 +153,27 @@ direct_weight, direct_recency, direct_weight_x_recency, x_cosine: Uniform(0.0, 0
 
 Asterisks denote selected values.
 
-##Parameters
+### Parameters
 This method has no neural trainable parameters.
 
 ```
 #Params: 17 scalar fusion weights, 0 neural parameters
-
-Hardware
+``` 
+### Hardware
 
 The method is CPU-compatible. No GPU is required.
 
-Example hardware used:
+ Hardware used:
 
 ```
-Google Colab CPU / local CPU
+Google Colab CPU
 ```
 
-##Officiality
+### Officiality
 
 This is the official implementation by the author of the submitted method.
 
-##Technical report
+### Technical report
 
 See:
 ```
@@ -173,4 +182,4 @@ TECHNICAL_REPORT.md
 for the method description, protocol, feature definitions, hyperparameters, and 10-seed result. 
 ---
 
-This README style is much closer to the OGB example you showed: clear requirements, exact commands, output files, performance table, and references to the technical report.
+
