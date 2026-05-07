@@ -56,7 +56,7 @@ External data: No
 --trials: number of validation-search trials per seed.
 --seed: random seed for one run.
 --force_rebuild: rebuild cached feature matrices.
-
+```
 ### Reproduce one seed
 
 python run_thop_collab.py \
