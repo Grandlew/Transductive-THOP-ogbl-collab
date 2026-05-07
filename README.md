@@ -30,13 +30,11 @@ dataset = PygLinkPropPredDataset(name="ogbl-collab", root="data")
 ```
 ### Evaluation protocol
 For validation:
-```
 
 ```
 input graph = training positive edges only
 target = validation positive/negative edges
 ```
-
 For final test inference:
 
 ```
