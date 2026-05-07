@@ -27,7 +27,8 @@ The code automatically downloads and processes ogbl-collab through OGB:
 ```
 from ogb.linkproppred import PygLinkPropPredDataset
 dataset = PygLinkPropPredDataset(name="ogbl-collab", root="data")
-##Evaluation protocol
+```
+### Evaluation protocol
 For validation:
 ```
 
@@ -47,7 +48,9 @@ No validation negative edges or test labels are used for graph construction or f
 
 External data: No
 
-Basic command-line arguments
+### Basic command-line arguments
+
+```
 --config: path to the configuration file.
 --root: directory where the OGB dataset is stored/downloaded.
 --cache_dir: directory used to cache deterministic feature matrices.
