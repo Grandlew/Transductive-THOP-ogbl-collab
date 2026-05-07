@@ -59,6 +59,7 @@ External data: No
 ```
 ### Reproduce one seed
 
+```
 python run_thop_collab.py \
   --config configs/base.json \
   --root data \
@@ -66,7 +67,7 @@ python run_thop_collab.py \
   --result_dir results \
   --seed 0 \
   --trials 10000
-
+```
   ### This saves:
   results/tt_seed0_report.json
 results/tt_seed0_predictions.pkl
